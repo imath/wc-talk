@@ -1,0 +1,279 @@
+# Copyright (C) 2014 
+# This file is distributed under the same license as the  package.
+msgid ""
+msgstr ""
+"Project-Id-Version: WordCamp Talks\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/wp-idea-stream-custom\n"
+"POT-Creation-Date: 2014-10-21 23:33:27+00:00\n"
+"PO-Revision-Date: 2014-10-22 01:35+0100\n"
+"Last-Translator: imath <mathchristo@yahoo.fr>\n"
+"Language-Team: \n"
+"Language: fr_FR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.6.9\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: wp-idea-stream-custom.php:71
+msgid "Talks"
+msgstr "Présentations"
+
+#: wp-idea-stream-custom.php:72
+msgid "WordCamp Talks"
+msgstr "WordCamp"
+
+#: wp-idea-stream-custom.php:73
+msgid "All Talks"
+msgstr "Toutes les présentations"
+
+#: wp-idea-stream-custom.php:74
+msgid "Talk"
+msgstr "Présentation"
+
+#: wp-idea-stream-custom.php:75
+msgid "Add a Talk"
+msgstr "Ajouter une présentation"
+
+#: wp-idea-stream-custom.php:76
+msgid "Add a new Talk"
+msgstr "Ajouter une nouvelle présentation"
+
+#: wp-idea-stream-custom.php:77
+msgid "Edit Talk"
+msgstr "Modifier la présentation"
+
+#: wp-idea-stream-custom.php:78
+msgid "New Talk"
+msgstr "Nouvelle présentation"
+
+#: wp-idea-stream-custom.php:79
+msgid "View Talk"
+msgstr "Afficher la présentation"
+
+#: wp-idea-stream-custom.php:80
+msgid "Seach Talks"
+msgstr "Rechercher une présentation"
+
+#: wp-idea-stream-custom.php:81
+msgid "No Talks found"
+msgstr "Aucune présentation trouvée"
+
+#: wp-idea-stream-custom.php:82
+msgid "No Talks found in trask"
+msgstr "Aucune présentation dans la corbeille"
+
+#: wp-idea-stream-custom.php:115
+msgid "Talk Types"
+msgstr "Types de présentation"
+
+#: wp-idea-stream-custom.php:116
+msgid "Talk Type"
+msgstr "Type de présentation"
+
+#: wp-idea-stream-custom.php:117
+msgid "Edit Type"
+msgstr "Modifier le type"
+
+#: wp-idea-stream-custom.php:118
+msgid "Update Type"
+msgstr "Mettre à jour le type"
+
+#: wp-idea-stream-custom.php:119
+msgid "Add New Type"
+msgstr "Ajouter un nouveau type"
+
+#: wp-idea-stream-custom.php:120
+msgid "New Type Name"
+msgstr "Nouveau nom de type"
+
+#: wp-idea-stream-custom.php:121
+msgid "All Types"
+msgstr "Tous les types"
+
+#: wp-idea-stream-custom.php:122
+msgid "Search Types"
+msgstr "Rechercher un type"
+
+#: wp-idea-stream-custom.php:123
+msgid "Parent Type"
+msgstr "Type parent"
+
+#: wp-idea-stream-custom.php:124
+msgid "Parent Type:"
+msgstr "Type parent:"
+
+#: wp-idea-stream-custom.php:159
+msgid "Talk Focuses"
+msgstr "Zooms de présentation"
+
+#: wp-idea-stream-custom.php:160
+msgid "Talk Focus"
+msgstr "Zoom de présentation"
+
+#: wp-idea-stream-custom.php:161
+msgid "Edit Focus"
+msgstr "Modifier le zoom"
+
+#: wp-idea-stream-custom.php:162
+msgid "Update Focus"
+msgstr "Mettre à jour le zoom"
+
+#: wp-idea-stream-custom.php:163
+msgid "Add New Focus"
+msgstr "Ajouter un nouveau zoom"
+
+#: wp-idea-stream-custom.php:164
+msgid "New Focus Name"
+msgstr "Nouveau nom de zoom"
+
+#: wp-idea-stream-custom.php:165
+msgid "All Focuses"
+msgstr "Tous les zooms"
+
+#: wp-idea-stream-custom.php:166
+msgid "Search Focuses"
+msgstr "Rechercher un zoom"
+
+#: wp-idea-stream-custom.php:167
+msgid "Popular Focuses"
+msgstr "Zooms populaires"
+
+#: wp-idea-stream-custom.php:168
+msgid "Separate Focuses with commas"
+msgstr "Séparer les zooms par une virgule"
+
+#: wp-idea-stream-custom.php:169
+msgid "Add or remove Focuses"
+msgstr "Ajouter ou supprimer des zooms"
+
+#: wp-idea-stream-custom.php:170
+msgid "Choose from the most popular Focuses"
+msgstr "Choisir parmi les suggestions de zoom"
+
+#: wp-idea-stream-custom.php:191
+msgid "Company"
+msgstr "Société"
+
+#: wp-idea-stream-custom.php:192
+msgid "Phone number"
+msgstr "Téléphone"
+
+#: wp-idea-stream-custom.php:193
+msgid "Twitter account"
+msgstr "Compte Twitter"
+
+#: wp-idea-stream-custom.php:214
+msgid "First Name"
+msgstr "Prénom"
+
+#: wp-idea-stream-custom.php:215
+msgid "Last Name"
+msgstr "Nom"
+
+#: wp-idea-stream-custom.php:232
+msgid "If possible, choose an email that is associated to your %s account"
+msgstr "Si possible, merci d&#39;utiliser un email associé à votre compte %s."
+
+#: wp-idea-stream-custom.php:270 wp-idea-stream-custom.php:654
+msgid "Short biography"
+msgstr "Courte biographie"
+
+#: wp-idea-stream-custom.php:300
+msgid "Site language"
+msgstr "Langage du site"
+
+#: wp-idea-stream-custom.php:492
+msgid "Speaker"
+msgstr "Orateur"
+
+#: wp-idea-stream-custom.php:575
+msgid "Ah! caught trying to spy!"
+msgstr "Ah! Alors on essaye d&#39;espionner!"
+
+#: wp-idea-stream-custom.php:661
+msgid "Edit your profile"
+msgstr "Modifier votre profil"
+
+#: wp-idea-stream-custom.php:897 wp-idea-stream-custom.php:944
+#: wp-idea-stream-custom.php:1054
+msgid "Targetted level"
+msgstr "Niveau ciblé"
+
+#: wp-idea-stream-custom.php:901 wp-idea-stream-custom.php:933
+msgid "Novice"
+msgstr "Débutant"
+
+#: wp-idea-stream-custom.php:908 wp-idea-stream-custom.php:934
+msgid "Advanced"
+msgstr "Avancé"
+
+#: wp-idea-stream-custom.php:915 wp-idea-stream-custom.php:935
+msgid "Expert"
+msgstr "Expert"
+
+#: wp-idea-stream-custom.php:967 wp-idea-stream-custom.php:1038
+#: wp-idea-stream-custom.php:1055
+msgid "Targetted audience"
+msgstr "Audience ciblée"
+
+#: wp-idea-stream-custom.php:971 wp-idea-stream-custom.php:1024
+msgid "Developers"
+msgstr "Développeurs"
+
+#: wp-idea-stream-custom.php:978 wp-idea-stream-custom.php:1025
+msgid "Designers"
+msgstr "Designers"
+
+#: wp-idea-stream-custom.php:985 wp-idea-stream-custom.php:1026
+msgid "Project Managers"
+msgstr "Chefs de Projets"
+
+#: wp-idea-stream-custom.php:992 wp-idea-stream-custom.php:1027
+msgid "Content Producers"
+msgstr "Producteurs de contenus"
+
+#: wp-idea-stream-custom.php:999 wp-idea-stream-custom.php:1028
+msgid "Marketers"
+msgstr "Marketers"
+
+#: wp-idea-stream-custom.php:1006 wp-idea-stream-custom.php:1029
+msgid "Customers"
+msgstr "Clients"
+
+#: wp-idea-stream-custom.php:1106
+msgid "Pending"
+msgstr "En attente"
+
+#: wp-idea-stream-custom.php:1107
+msgid "Short-listed"
+msgstr "Pré-selectionné"
+
+#: wp-idea-stream-custom.php:1108
+msgid "Selected"
+msgstr "Retenu"
+
+#: wp-idea-stream-custom.php:1109
+msgid "Rejected"
+msgstr "Rejeté"
+
+#: wp-idea-stream-custom.php:1140
+msgid "Filter by state"
+msgstr "Filtrer par état"
+
+#: wp-idea-stream-custom.php:1166
+msgid "Workflow"
+msgstr "Workflow"
+
+#: wp-idea-stream-custom.php:1195 wp-idea-stream-custom.php:1266
+#: wp-idea-stream-custom.php:1318
+msgid "State of the talk"
+msgstr "Etat de la présentation"
+
+#: wp-idea-stream-custom.php:1447
+msgid "WordCamp Talks Settings"
+msgstr "Réglages de l&#39;outil de recueil des présentations du WordCamp "
+
+#: wp-idea-stream-custom.php:1464
+msgid "Talk submissions closing date"
+msgstr "Date de clôture des candidatures."
