@@ -385,23 +385,35 @@ function wc_talk_set_language_cookie( $lang = '' ) {
  * @return string HTML output
  */
 function wc_talk_english_speaker_info() {
+	$messages = array(
+		10 => esc_html__( 'Please be aware that speakers are not remunerated nor defrayed. Your presentation or workshop is a volontary participation in the WordPress community.', 'wc-talk' ),
+		20 => sprintf( esc_html__( 'Please be also aware that you may be filmed and that the video of your presentation can be available on %s.', 'wc-talk' ), '<a href="http://wordpress.tv/category/wordcamptv/">WordPress TV</a>' ),
+	);
+
 	// en_US language is set, don't display the message
-	if ( ! empty( $_COOKIE['wp-lang-' . COOKIEHASH] ) && 'en_US' == $_COOKIE['wp-lang-' . COOKIEHASH] ) {
-		return;
+	if ( ( empty( $_COOKIE['wp-lang-' . COOKIEHASH] ) || 'en_US' != $_COOKIE['wp-lang-' . COOKIEHASH] ) && '' != get_locale() ) {
+		$en_message  = 'English speakers are welcome to WordCamp Paris! You can set the language of the site to english by choosing this language';
+		$en_message .= ' in the "Language du site" dropdown field, and then directly submit the sign-up making sure to leave all other fields empty.';
 	}
 
-	// Site's language is already en_US, no need to display the message
-	if ( '' == get_locale() ) {
-		return;
+	if ( ! empty( $en_message ) ) {
+		?>
+		<div class="message info">
+			<p><?php echo esc_html( $en_message ); ?></p>
+		</div>
+		<?php
 	}
 
-	$message  = 'English speakers are welcome to WordCamp Paris! You can set the language of the site to english by choosing this language';
-	$message .= ' in the "Language du site" dropdown field, and then directly submit the sign-up making sure to leave all other fields empty.';
-	?>
-	<div class="message info">
-		<p><?php echo esc_html( $message ); ?></p>
-	</div>
-	<?php
+	if ( ! wc_talk_donot_print_warning() ) {
+		?>
+		<div class="message error">
+			<?php foreach ( $messages as $message ) : ?>
+				<p><?php echo $message; ?></p>
+			<?php endforeach; ?>
+		</div>
+		<?php
+	}
+	
 }
 add_action( 'wp_idea_stream_signup_before_content', 'wc_talk_english_speaker_info' );
 
@@ -1445,7 +1457,11 @@ function wc_talk_get_closing_date( $timestamp = false ) {
 	}
 
 	return $closing;
-} 
+}
+
+function wc_talk_donot_print_warning( $default = false ) {
+	return (bool) get_option( '_wc_talk_donot_print_warning', $default );
+}
 
 /** Settings ******************************************************************/
 
@@ -1480,6 +1496,13 @@ function wc_talk_settings_field( $setting_fields = array() ) {
 		'args'              => array()
 	);
 
+	$setting_fields['wc_talk_settings']['_wc_talk_donot_print_warning'] = array(
+		'title'             => __( 'Neutralize warning on sign-up page', 'wc-talk' ),
+		'callback'          => 'wc_talk_warning_settings_field_callback',
+		'sanitize_callback' => 'intval',
+		'args'              => array()
+	);
+
 	return $setting_fields;
 }
 add_filter( 'wp_idea_stream_get_settings_fields', 'wc_talk_settings_field', 10, 1 );
@@ -1498,6 +1521,15 @@ function wc_talk_settings_field_callback() {
 	$closing = wc_talk_get_closing_date();
 	?>
 	<input name="_wc_talk_closing_date" id="_wc_talk_closing_date" type="text" class="regular-text code" placeholder="YYYY-MM-DD HH:II" value="<?php echo esc_attr( $closing ); ?>" />
+	<?php
+}
+
+/**
+ * Callback function for warning message
+ */
+function wc_talk_warning_settings_field_callback() {
+	?>
+	<input name="_wc_talk_donot_print_warning" id="_wc_talk_donot_print_warning" type="checkbox" value="1" <?php checked( wc_talk_donot_print_warning() ); ?> />
 	<?php
 }
 
