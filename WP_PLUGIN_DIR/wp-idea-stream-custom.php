@@ -316,6 +316,7 @@ function wc_talk_signup_language() {
 			'id'        => '_wp_idea_stream_signup_language',
 			'selected'  => $language,
 			'languages' => $languages,
+			'show_available_translations' => false
 		) ); ?>
 	</label>
 	<?php
