@@ -15,8 +15,8 @@ Available in french and english.
 Configuration needed
 --------------------
 
-+ WordPress 4.0
-+ WP Idea Stream 2.1.0-alpha (so far is still a work in progress and is located in the [wc-dev branch](https://github.com/imath/wp-idea-stream/tree/wc-dev) of the plugin's Github repository )
++ WordPress 4.1
++ WP Idea Stream 2.1.0-beta1 (so far is still a work in progress and is located in the [wc-dev branch](https://github.com/imath/wp-idea-stream/tree/wc-dev) of the plugin's Github repository )
 
 Installation
 ------------
