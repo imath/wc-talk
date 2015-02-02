@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WP Idea Stream 2.1.0-alpha\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/wp-idea-stream\n"
-"POT-Creation-Date: 2015-02-02 01:44:48+00:00\n"
-"PO-Revision-Date: 2015-02-02 03:44+0100\n"
+"POT-Creation-Date: 2015-02-02 03:33:23+00:00\n"
+"PO-Revision-Date: 2015-02-02 04:34+0100\n"
 "Last-Translator: imath <mathchristo@yahoo.fr>\n"
 "Language-Team: \n"
 "Language: en_US\n"
@@ -1932,7 +1932,7 @@ msgstr "&rarr;"
 msgid "You are not allowed to submit ideas"
 msgstr "You are not allowed to submit talks"
 
-#: includes/ideas/tags.php:1434
+#: includes/ideas/tags.php:1436
 msgid ""
 "Please <a href=\"%s\" title=\"Log in\">log in</a> or <a href=\"%s\" title="
 "\"Sign up\">register</a> to this site to submit an idea."
@@ -1940,45 +1940,51 @@ msgstr ""
 "Please <a href=\"%s\" title=\"Log in\">log in</a> or <a href=\"%s\" title="
 "\"Sign up\">register</a> to this site to submit a talk"
 
-#: includes/ideas/tags.php:1467
+#: includes/ideas/tags.php:1442
+msgid ""
+"Please <a href=\"%s\" title=\"Log in\">log in</a> to this site to submit an "
+"idea."
+msgstr "Please <a href=\"%s\" title=\"Log in\">log in</a> to submit a talk"
+
+#: includes/ideas/tags.php:1475
 msgid "Title"
 msgstr "Title"
 
-#: includes/ideas/tags.php:1538
+#: includes/ideas/tags.php:1546
 msgid "Description"
 msgstr "Description"
 
-#: includes/ideas/tags.php:1640
+#: includes/ideas/tags.php:1648
 msgid "Categories"
 msgstr "Types"
 
-#: includes/ideas/tags.php:1682
+#: includes/ideas/tags.php:1690
 msgid "No categories are available."
 msgstr "No Types are available."
 
-#: includes/ideas/tags.php:1730
+#: includes/ideas/tags.php:1738
 msgid "Tags"
 msgstr "Focus"
 
-#: includes/ideas/tags.php:1731
+#: includes/ideas/tags.php:1739
 msgid "Type your tag, then hit the return or space key to add it"
 msgstr "Type your focus, then hit the return or space key to add it"
 
-#: includes/ideas/tags.php:1800
+#: includes/ideas/tags.php:1808
 msgid "Choose the most used tag"
 msgid_plural "Choose from the %d most used tags"
 msgstr[0] "Choose from the suggested focus"
 msgstr[1] "Choose from the %d suggested focuses"
 
-#: includes/ideas/tags.php:1888 includes/users/tags.php:322
+#: includes/ideas/tags.php:1896 includes/users/tags.php:322
 msgid "Reset"
 msgstr "Reset"
 
-#: includes/ideas/tags.php:1889
+#: includes/ideas/tags.php:1897
 msgid "Submit"
 msgstr "Submit"
 
-#: includes/ideas/tags.php:1894
+#: includes/ideas/tags.php:1902
 msgid "Update"
 msgstr "Update"
 

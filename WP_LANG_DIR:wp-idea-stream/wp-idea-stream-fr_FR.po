@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WP Idea Stream 2.0.0-beta4\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/wp-idea-stream\n"
-"POT-Creation-Date: 2015-02-02 01:44:48+00:00\n"
-"PO-Revision-Date: 2015-02-02 03:48+0100\n"
+"POT-Creation-Date: 2015-02-02 03:33:23+00:00\n"
+"PO-Revision-Date: 2015-02-02 04:35+0100\n"
 "Last-Translator: imath <mathchristo@yahoo.fr>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -2009,7 +2009,7 @@ msgstr "&rarr;"
 msgid "You are not allowed to submit ideas"
 msgstr "Vous n'avez pas les droits suffisants pour publier des présentations."
 
-#: includes/ideas/tags.php:1434
+#: includes/ideas/tags.php:1436
 msgid ""
 "Please <a href=\"%s\" title=\"Log in\">log in</a> or <a href=\"%s\" title="
 "\"Sign up\">register</a> to this site to submit an idea."
@@ -2018,47 +2018,55 @@ msgstr ""
 "href=\"%s\" title=\"Inscription\">inscrire</a> avant de soumettre votre "
 "conférence."
 
-#: includes/ideas/tags.php:1467
+#: includes/ideas/tags.php:1442
+msgid ""
+"Please <a href=\"%s\" title=\"Log in\">log in</a> to this site to submit an "
+"idea."
+msgstr ""
+"Merci de vous <a href=\"%s\" title=\"Log in\">connecter</a> avant de partager "
+"votre idée."
+
+#: includes/ideas/tags.php:1475
 msgid "Title"
 msgstr "Titre"
 
-#: includes/ideas/tags.php:1538
+#: includes/ideas/tags.php:1546
 msgid "Description"
 msgstr "Description"
 
-#: includes/ideas/tags.php:1640
+#: includes/ideas/tags.php:1648
 msgid "Categories"
 msgstr "Types"
 
-#: includes/ideas/tags.php:1682
+#: includes/ideas/tags.php:1690
 msgid "No categories are available."
 msgstr "Aucun type disponible. "
 
-#: includes/ideas/tags.php:1730
+#: includes/ideas/tags.php:1738
 msgid "Tags"
 msgstr "Zooms"
 
-#: includes/ideas/tags.php:1731
+#: includes/ideas/tags.php:1739
 msgid "Type your tag, then hit the return or space key to add it"
 msgstr ""
 "Taper votre zoom (point WordPress particulier abordé par votre présentation), "
 "puis appuyer sur la touche entrée ou espace pour l&#39;ajouter"
 
-#: includes/ideas/tags.php:1800
+#: includes/ideas/tags.php:1808
 msgid "Choose the most used tag"
 msgid_plural "Choose from the %d most used tags"
 msgstr[0] "Sélectionnez le zoom suggéré"
 msgstr[1] "Sélectionner parmi les zooms suggérés"
 
-#: includes/ideas/tags.php:1888 includes/users/tags.php:322
+#: includes/ideas/tags.php:1896 includes/users/tags.php:322
 msgid "Reset"
 msgstr "Annuler"
 
-#: includes/ideas/tags.php:1889
+#: includes/ideas/tags.php:1897
 msgid "Submit"
 msgstr "Déposer"
 
-#: includes/ideas/tags.php:1894
+#: includes/ideas/tags.php:1902
 msgid "Update"
 msgstr "Mettre à jour"
 
