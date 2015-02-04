@@ -16,7 +16,7 @@ Configuration needed
 --------------------
 
 + WordPress 4.1
-+ WP Idea Stream 2.1.0-beta1 (so far is still a work in progress and is located in the [wc-dev branch](https://github.com/imath/wp-idea-stream/tree/wc-dev) of the plugin's Github repository )
++ WP Idea Stream 2.1.0-beta1 [Github repo](https://github.com/imath/wp-idea-stream/tree/wc-dev) or [WordPress repo](https://wordpress.org/plugins/wp-idea-stream) once 2.1.0 is released.
 
 Installation
 ------------

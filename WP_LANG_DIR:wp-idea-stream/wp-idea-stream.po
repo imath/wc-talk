@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WP Idea Stream 2.1.0-alpha\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/wp-idea-stream\n"
-"POT-Creation-Date: 2015-02-02 03:33:23+00:00\n"
-"PO-Revision-Date: 2015-02-02 04:34+0100\n"
+"POT-Creation-Date: 2015-02-04 01:47:45+00:00\n"
+"PO-Revision-Date: 2015-02-04 03:08+0100\n"
 "Last-Translator: imath <mathchristo@yahoo.fr>\n"
 "Language-Team: \n"
 "Language: en_US\n"
@@ -1029,19 +1029,19 @@ msgctxt "idea commented activity action"
 msgid "%1$s replyed to this %2$s"
 msgstr "%1$s replyed to this %2$s"
 
-#: includes/buddypress/activity.php:1297
+#: includes/buddypress/activity.php:1329
 msgid "Repair IdeaStream activities."
 msgstr "Repair IdeaStream activities."
 
-#: includes/buddypress/activity.php:1332
+#: includes/buddypress/activity.php:1364
 msgid "Making sure IdeaStream activities are consistent: %s"
 msgstr "Making sure IdeaStream activities are consistent: %s"
 
-#: includes/buddypress/activity.php:1335
+#: includes/buddypress/activity.php:1367
 msgid "No activity needs to be repaired."
 msgstr "No activity needs to be repaired."
 
-#: includes/buddypress/activity.php:1475
+#: includes/buddypress/activity.php:1507
 msgid "%d repared"
 msgstr "%d repared"
 
