@@ -3,11 +3,11 @@
  * WP Idea Stream Custom.
  *
  * Manage WordCamp talk proposals.
- * 
+ *
  * Required config:
  * - WordPress 4.0 (not multisite)
  * - WP Idea Stream 2.1.0-alpha
- * 
+ *
  * License: GNU/GPL 2
  * Author: imath
  * Contributor: gregoirenoyelle
@@ -25,7 +25,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  * /wp-content/languages/wc-talk/
  *
  * Call the file 'wc-talk-xx_XX.mo'
- * 
+ *
  * @return bool true if found, false otherwise
  */
 function wc_talk_load_textdomain() {
@@ -45,7 +45,7 @@ add_action( 'wp_idea_stream_loaded', 'wc_talk_load_textdomain' );
 
 /**
  * Override IdeaStream's post type identifier
- * 
+ *
  * @param  string $post_type_id the post type identifier
  * @return string               the new type identifier
  */
@@ -56,7 +56,7 @@ add_filter( 'wp_idea_stream_get_post_type', 'wc_talk_get_post_type', 10, 1 );
 
 /**
  * Override IdeaStream's menu icon
- * 
+ *
  * @param  array  $post_type_args the post type arguments
  * @return array                  the post type arguments
  */
@@ -69,7 +69,7 @@ add_filter( 'wp_idea_stream_post_type_register_args', 'wc_talk_post_type_registe
 
 /**
  * Override IdeaStream's post type labels
- * 
+ *
  * @param  array  $post_type_labels the post type labels
  * @return array                    the post type labels
  */
@@ -97,7 +97,7 @@ add_filter( 'wp_idea_stream_post_type_register_labels', 'wc_talk_post_type_label
 
 /**
  * Override IdeaStream's category identifier
- * 
+ *
  * @param  string $category_id the category identifier
  * @return string              the type identifier
  */
@@ -108,7 +108,7 @@ add_filter( 'wp_idea_stream_get_category', 'wc_talk_get_category', 10, 1 );
 
 /**
  * Override IdeaStream's category labels
- * 
+ *
  * @param  array  $category_labels the category labels
  * @return array                   the type labels
  */
@@ -117,7 +117,7 @@ function wc_talk_category_label_args( $category_labels = array() ) {
 		return $category_labels;
 	}
 
-	$category_labels['labels'] = array_merge( 
+	$category_labels['labels'] = array_merge(
 		$category_labels['labels'],
 		array(
 			'name'              => __( 'Talk Types',    'wc-talk' ),
@@ -141,7 +141,7 @@ add_filter( 'wp_idea_stream_category_register_labels', 'wc_talk_category_label_a
 
 /**
  * Override IdeaStream's tag identifier
- * 
+ *
  * @param  string $tag_id the tag identifier
  * @return string         the focus identifier
  */
@@ -152,7 +152,7 @@ add_filter( 'wp_idea_stream_get_tag', 'wc_talk_get_tag', 10, 1 );
 
 /**
  * Override IdeaStream's tag labels
- * 
+ *
  * @param  array  $tag_labels the tag labels
  * @return array              the focus labels
  */
@@ -161,7 +161,7 @@ function wc_talk_tag_label_args( $tag_labels = array() ) {
 		return $tag_labels;
 	}
 
-	$tag_labels['labels'] = array_merge( 
+	$tag_labels['labels'] = array_merge(
 		$tag_labels['labels'],
 		array(
 			'name'                       => __( 'Talk Focuses',                         'wc-talk' ),
@@ -188,7 +188,7 @@ add_filter( 'wp_idea_stream_tag_register_labels', 'wc_talk_tag_label_args', 10, 
 
 /**
  * Add Specific contact methods to the user
- * 
+ *
  * @param  array  $methods the contact methods (should be an empty array since 3.6)
  * @return array           the specific contact methods
  */
@@ -212,7 +212,7 @@ add_filter( 'user_contactmethods', 'wc_talk_contactmethods', 20, 1 );
 /**
  * Add Fields to IdeaStream's signup form
  * ! require at least WP Idea Stream 2.1.0-alpha
- * 
+ *
  * @param  array  $fields the signup fields (login + email)
  * @return array          the new signup fields.
  */
@@ -221,7 +221,7 @@ function wc_talk_signup_field( $fields = array() ) {
 		return $fields;
 	}
 
-	return array_merge( 
+	return array_merge(
 		$fields,
 		array(
 			'first_name' => __( 'First Name', 'wc-talk' ),
@@ -232,13 +232,13 @@ function wc_talk_signup_field( $fields = array() ) {
 add_filter( 'wp_idea_stream_user_get_signup_fields', 'wc_talk_signup_field', 10, 1 );
 
 /**
- * Add a description to user email to try to get an email 
+ * Add a description to user email to try to get an email
  * associated to a Gravatar account
  * ! require at least WP Idea Stream 2.1.0-alpha
- * 
+ *
  * @param  string $retval      empty string
  * @param  array  $field_array sanitized key/value
- * @return string HTML Output   
+ * @return string HTML Output
  */
 function wc_talk_signup_field_add_description( $retval = '', $field_array = array() ) {
 	if ( ! empty( $field_array['key'] ) && 'user_email' == $field_array['key'] ) {
@@ -252,7 +252,7 @@ add_filter( 'wp_idea_stream_users_after_signup_field', 'wc_talk_signup_field_add
 /**
  * Force some signup fields to be required
  * ! require at least WP Idea Stream 2.1.0-alpha
- * 
+ *
  * @param  bool    $retval wether the field is required or not
  * @param  string  $key    the field key
  * @return bool            true if required, false otherwise
@@ -269,7 +269,7 @@ add_filter( 'wp_idea_stream_users_is_signup_field_required', 'wc_talk_required_f
 /**
  * Include the user's bio in signup form
  * ! require at least WP Idea Stream 2.1.0-alpha
- * 
+ *
  * @return string HTML Output
  */
 function wc_talk_signup_description() {
@@ -278,6 +278,7 @@ function wc_talk_signup_description() {
 	if ( ! empty( $_POST['wp_idea_stream_signup']['description'] ) ) {
 		$allowed_html = wp_kses_allowed_html( 'user_description' );
 		$description = wp_kses( $_POST['wp_idea_stream_signup']['description'], $allowed_html );
+		$description = wp_unslash( $description );
 	}
 	?>
 	<label for="_wp_idea_stream_signup_description"><?php esc_html_e( 'Short biography', 'wc-talk' ) ;?>  <span class="required">*</span></label>
@@ -290,14 +291,14 @@ add_action( 'wp_idea_stream_signup_custom_field_after', 'wc_talk_signup_descript
  * Include a field to let the user set his language
  * ! require at least WP Idea Stream 2.1.0-alpha
  * en_US or site's language
- * 
+ *
  * @return string HTML output
  */
 function wc_talk_signup_language() {
 	$language = get_locale();
 
 	if ( isset( $_POST['wp_idea_stream_signup']['language'] ) ) {
-		$language = sanitize_key( $_POST['wp_idea_stream_signup']['language'] );
+		$language = esc_html( $_POST['wp_idea_stream_signup']['language'] );
 	}
 
 	$languages = get_available_languages();
@@ -305,7 +306,7 @@ function wc_talk_signup_language() {
 	if ( empty( $languages ) ) {
 		return;
 	}
-	
+
 	if ( ! in_array( $language, $languages ) ) {
 		$language = '';
 	}
@@ -327,7 +328,7 @@ add_action( 'wp_idea_stream_signup_custom_field_before', 'wc_talk_signup_languag
 /**
  * Save the language preferences for the user
  * ! require at least WP Idea Stream 2.1.0-alpha
- * 
+ *
  * @param  integer $user_id   the id of the created user
  * @param  array   $edit_user the userdata sent from the signup form
  */
@@ -347,7 +348,7 @@ add_action( 'wp_idea_stream_users_signup_user_created', 'wc_talk_save_signup_lan
 
 /**
  * Check for a cookie to eventually unset locale & fallback to en_US
- * 
+ *
  * @param  string $locale language locale
  * @return string         language locale
  */
@@ -357,7 +358,7 @@ function wc_talk_set_locale( $locale = '' ) {
 	}
 
 	if ( 'fr_FR' != $_COOKIE['wp-lang-' . COOKIEHASH] ) {
-		$locale = ''; 
+		$locale = '';
 	}
 
 	return $locale;
@@ -366,7 +367,7 @@ add_filter( 'locale', 'wc_talk_set_locale', 10, 1 );
 
 /**
  * Store the user's local preferences in a cookie
- * 
+ *
  * @param  string $lang language local
  */
 function wc_talk_set_language_cookie( $lang = '' ) {
@@ -382,7 +383,7 @@ function wc_talk_set_language_cookie( $lang = '' ) {
 /**
  * Display a welcome message to english speakers to explain them
  * how to set the site's language to en_US.
- * 
+ *
  * @return string HTML output
  */
 function wc_talk_english_speaker_info() {
@@ -414,7 +415,7 @@ function wc_talk_english_speaker_info() {
 		</div>
 		<?php
 	}
-	
+
 }
 add_action( 'wp_idea_stream_signup_before_content', 'wc_talk_english_speaker_info' );
 
@@ -423,14 +424,14 @@ add_action( 'wp_idea_stream_signup_before_content', 'wc_talk_english_speaker_inf
  * can submit the form selecting the language and leaving all fields empty
  * in order to set the site's language
  * ! require at least WP Idea Stream 2.1.0-alpha
- * 
+ *
  * @param  string $user_login the user login
  * @param  string $user_email the user email
  * @param  string $edit_user  the userdata
  */
 function wc_talk_maybe_set_language_cookie( $user_login = '', $user_email = '', $edit_user = '' ) {
 	// Let the signup process do his job. User must be a french guy :)
-	if ( ! empty( $user_login ) && ! empty( $user_email ) ) {
+	if ( ! empty( $user_login ) || ! empty( $user_email ) ) {
 		return;
 	}
 
@@ -445,7 +446,7 @@ add_action( 'wp_idea_stream_users_before_signup_field_required', 'wc_talk_maybe_
 
 /**
  * Refreshes the cookie
- * 
+ *
  * @param  string $login the user login
  * @param  WP_User $user the user object
  */
@@ -459,7 +460,7 @@ function wc_talk_refresh_user_language( $login = '', $user = null ) {
 	if ( empty( $lang ) ) {
 		$lang = 'fr_FR';
 	}
-	
+
 	wc_talk_set_language_cookie( $lang );
 }
 add_action( 'wp_login', 'wc_talk_refresh_user_language', 10, 2 );
@@ -469,7 +470,7 @@ add_action( 'wp_login', 'wc_talk_refresh_user_language', 10, 2 );
 /**
  * Register the custom speaker role caps
  * ! require at least WP Idea Stream 2.1.0-alpha
- * 
+ *
  * @return array custom speaker role caps
  */
 function wc_talk_get_speaker_caps() {
@@ -478,7 +479,7 @@ function wc_talk_get_speaker_caps() {
 	$caps = array(
 		'read' => true,
 	);
-	
+
 	if ( ! empty( $post_type_object->cap ) ) {
 
 		$caps = array_merge(
@@ -523,7 +524,7 @@ add_action( 'wp_idea_stream_init', 'wc_talk_get_role' );
 /**
  * Update the user role if sign-up was made from IdeaStream's signup
  * ! require at least WP Idea Stream 2.1.0-alpha
- * 
+ *
  * @param  object $userdata the userdata sent from the signup form
  * @return object           the userdata including the custom role
  */
@@ -538,7 +539,23 @@ function wc_talk_set_signup_role( $userdata = null ) {
 }
 add_filter( 'wp_idea_stream_users_signup_userdata', 'wc_talk_set_signup_role', 10, 1 );
 
-/** 
+/**
+ * Set the user role for network users when they submit a talk for the first time
+ * ! require at least WP Idea Stream 2.2.0-alpha
+ *
+ * @param  string $default_role default role to use for IdeaStream
+ * @return string the speaker role
+ */
+function wc_talk_set_network_user_default_role( $default_role = 'subscriber' ) {
+	if ( ! is_multisite() ) {
+		return $default_role;
+	}
+
+	return 'speaker';
+}
+add_filter( 'wp_idea_stream_users_get_default_role', 'wc_talk_set_network_user_default_role', 10, 1 );
+
+/**
  * Customize WP Idea Stream to make it a private WordCamp talk submission tool
  *
  * Speakers will be able to submit their talk privately. This will make sure each speaker will
@@ -562,7 +579,7 @@ add_filter( 'wp_idea_stream_users_signup_userdata', 'wc_talk_set_signup_role', 1
 
 /**
  * Force the IdeaStream's default idea status to be private for speakers
- * 
+ *
  * @param  string $status the idea post type (overriden to 'talk') default status
  * @return string         private!
  */
@@ -578,7 +595,7 @@ add_filter( 'wp_idea_stream_ideas_insert_status', 'wc_talk_speaker_default_idea_
 /**
  * Make sure feeds won't request comments for speakers
  * It avoids a speaker to see what admins are discussing :)
- * 
+ *
  * @param  string   $limit    the limit args of the WP_Query comment subquery
  * @param  WP_Query $wp_query WordPress main query
  * @return string             LIMIT 0 !
@@ -607,7 +624,7 @@ function wc_talk_neutralize_feeds_step_two() {
 
 /**
  * Empty comments for speaker
- * 
+ *
  * @param  array   $comments the comments array
  * @param  int     $post_id  the post id comments are attached to
  * @return array             empty array!
@@ -622,7 +639,7 @@ function wc_talk_neutralize_comments( $comments = array(), $post_id = 0 ) {
 
 /**
  * Neutralize user nav for speakers
- * 
+ *
  * @param  array  $user_nav IdeaStream's user nav
  * @return array            empty array!
  */
@@ -635,7 +652,7 @@ remove_action( 'wp_idea_stream_enqueue_scripts', 'wp_idea_stream_users_enqueue_s
 
 /**
  * Display user's profile fields
- * 
+ *
  * @return string HTML Output
  */
 function wc_talk_displat_user_profile() {
@@ -692,7 +709,7 @@ add_action( 'wp_idea_stream_user_profile_after_avatar', 'wc_talk_displat_user_pr
 
 /**
  * Redirect the speaker trying to see another speaker profile
- * 
+ *
  * @param  string $context the template context
  */
 function wc_talk_redirect_viewing_other_profile( $context = '' ) {
@@ -704,7 +721,7 @@ function wc_talk_redirect_viewing_other_profile( $context = '' ) {
 
 /**
  * Redirect the user viewing another user's talk
- * 
+ *
  * @param  WP_Post $talk the talk object
  */
 function wc_talk_redirect_viewing_other_talk( $talk = null ) {
@@ -720,7 +737,7 @@ function wc_talk_redirect_viewing_other_talk( $talk = null ) {
 
 /**
  * Make sure speakers won't be notified in case a comment has been added to their talks
- * 
+ *
  * @param  array   $emails     list of emails
  * @param  int     $comment_id the comment id
  * @return array               list of emails without the speaker one
@@ -753,7 +770,7 @@ add_filter( 'comment_notification_recipients', 'wc_talk_dont_notify_speakers', 1
 
 /**
  * Check the closing date and eventually disable new talks
- * 
+ *
  * @param  bool $can whether user can publish
  * @return bool       [description]
  */
@@ -770,12 +787,40 @@ function wc_talk_talks_opened( $can = false, $cap = '' ) {
 	}
 
 	$now = strtotime( date_i18n( 'Y-m-d H:i' ) );
-	
+
 	if ( $closing < $now ) {
 		$can = false;
 	}
 
 	return $can;
+}
+
+/**
+ * If the option to set a role when first idea is published is set, allow
+ * network users to post an idea
+ *
+ * ! require at least WP Idea Stream 2.2.0-alpha
+ */
+function wc_talk_map_meta_caps( $caps = array(), $cap = '', $user_id = 0, $args = array() ) {
+
+	// Allow Network users to create if site's is allowing WP Idea Stream to create a role
+	// for him once he posted an idea
+	if ( 'publish_ideas' == $cap ) {
+
+		if ( ! function_exists( 'wp_idea_stream_user_new_idea_set_role' ) ) {
+			return $caps;
+		}
+
+		if ( ! wp_idea_stream_user_new_idea_set_role() ) {
+			return $caps;
+		}
+
+		if ( ! empty( $user_id ) ) {
+			$caps = array( 'exist' );
+		}
+	}
+
+	return $caps;
 }
 
 /**
@@ -786,8 +831,13 @@ function wc_talk_set_current_user() {
 
 	// Not an admin ?
 	if ( empty( $user->roles ) || in_array( 'speaker', $user->roles ) || ! wp_idea_stream_user_can( 'wp_idea_stream_ideas_admin' ) ) {
-		// Neutralize the caps mapping
+		// Neutralize IdeaStream caps mapping
 		remove_filter( 'map_meta_cap', 'wp_idea_stream_map_meta_caps', 10, 4 );
+
+		if ( is_multisite() && empty( $user->roles ) ) {
+			add_filter( 'map_meta_cap', 'wc_talk_map_meta_caps', 12, 4 );
+		}
+
 		add_filter( 'wp_idea_stream_user_can', 'wc_talk_talks_opened', 10, 2 );
 
 		// Hide the comment link
@@ -814,7 +864,7 @@ add_action( 'wp_idea_stream_setup_current_user', 'wc_talk_set_current_user' );
  * Let 1 hour to speaker to edit their submitted talk
  * ! require at least WP Idea Stream 2.1.0-alpha
  * FYI: If the talk received a comment or a rate, speaker won't be able to edit his talk
- * 
+ *
  * @param  string $timediff
  * @return string
  */
@@ -826,7 +876,7 @@ add_filter( 'wp_idea_stream_ideas_can_edit_time', 'wc_talk_editing_time', 10, 1 
 /**
  * Get 10 focus in the tag cloud
  * ! require at least WP Idea Stream 2.1.0-alpha
- * 
+ *
  * @param  array  $term_args IdeaStream tag cloud args
  * @return array             focus cloud args
  */
@@ -841,7 +891,7 @@ add_filter( 'wp_idea_stream_generate_tag_cloud_args', 'wc_talk_focus_cloud_args'
 
 /**
  * Too afraid to break something, let's do this the dirty way!
- * 
+ *
  * @return string JS Output
  */
 function wc_talk_add_javascript_tricks() {
@@ -851,7 +901,7 @@ function wc_talk_add_javascript_tricks() {
 	( function( $ ) {
 
 		var enUS = $( '#_wp_idea_stream_signup_language option:eq(0)' ).text();
-		
+
 		$( '#_wp_idea_stream_signup_language option:eq(0)' ).text(
 			enUS.replace( ' (United States)', '' )
 		);
@@ -1071,7 +1121,7 @@ function wc_talk_audience_single_display( $display_meta = '' , $meta_object = nu
 /**
  * Add the custom fields in the column headers when the csv file is downloaded
  * ! require at least WP Idea Stream 2.1.0-alpha
- * 
+ *
  * @param  array  $columns list of WP_List_Table columns
  * @return array           same list with custom fields
  */
@@ -1086,7 +1136,7 @@ add_filter( 'wp_idea_stream_admin_csv_column_headers', 'wc_talk_csv_column_heade
 /**
  * Add the custom fields in the row datas when the csv file is downloaded
  * ! require at least WP Idea Stream 2.1.0-alpha
- * 
+ *
  * @param  string  $column  name of the column
  * @param  int     $talk_id the id of the talk
  * @return string  HTML output
@@ -1112,7 +1162,7 @@ add_filter( 'wp_idea_stream_admin_ideas_inline_edit', '__return_true' );
 /**
  * Prevents a meta_key restricted to admin usage to be deleted from front-end
  * ! require at least WP Idea Stream 2.1.0-alpha
- * 
+ *
  * @param  array  $meta_keys list meta_keys to skip
  * @return array             same list with the workfow_state one
  */
@@ -1124,7 +1174,7 @@ add_filter( 'wp_idea_stream_meta_key_skip_save', 'wc_talk_meta_key_skip_save', 1
 
 /**
  * Worflow states
- * 
+ *
  * @return array list of states
  */
 function wc_talk_workflow_states() {
@@ -1139,7 +1189,7 @@ function wc_talk_workflow_states() {
 
 /**
  * Get a specific Worflow state
- * 
+ *
  * @return string human readable state
  */
 function wc_talk_get_workflow_state( $state = 'pending' ) {
@@ -1152,7 +1202,7 @@ function wc_talk_get_workflow_state( $state = 'pending' ) {
 
 /**
  * Builds a dropdown to select worklow state
- * 
+ *
  * @param  string $selected  the db state
  * @param  string $select_id the name/id of select field
  * @return string HTML Output
@@ -1181,7 +1231,7 @@ function wc_talk_dropdown_workflow( $selected = '', $select_id = 'wc_talk_workfl
 
 /**
  * Register a new IdeaStream Metabox
- * 
+ *
  * @param  array  $metaboxes list of IdeaStream's metabox
  * @return array             same list with the workflow one
  */
@@ -1202,13 +1252,13 @@ add_filter( 'wp_idea_stream_admin_get_meta_boxes', 'wc_talk_mini_workflow_meta_b
 
 /**
  * Builds the output for the workflow metabox
- * 
+ *
  * @param  WP_Post $talk the post object
  * @return string HTML output
  */
 function wc_talk_mini_workflow_do_metabox( $talk = null ) {
 	$id = $talk->ID;
-	
+
 	$state = 'pending';
 	$db_state = wp_idea_stream_ideas_get_meta( $id, 'workflow_state' );
 
@@ -1228,7 +1278,7 @@ function wc_talk_mini_workflow_do_metabox( $talk = null ) {
 
 /**
  * Save the workflow state
- * 
+ *
  * @param  int     $id     id of the talk
  * @param  WP_Post $talk   the talk object
  * @param  bool    $update whether it's an update
@@ -1283,7 +1333,7 @@ add_action( 'wp_idea_stream_save_metaboxes', 'wc_talk_mini_workflow_save_metabox
 
 /**
  * Add a column header to list workflow states
- * 
+ *
  * @param  array  $columns column headers
  * @return array           columns headers + workflow stati
  */
@@ -1304,7 +1354,7 @@ add_filter( 'wp_idea_stream_admin_column_headers', 'wc_talk_manage_columns_heade
 
 /**
  * Add row data to the workflow states column
- * 
+ *
  * @param  string  $column  name of the column
  * @param  int     $talk_id id of the talk
  * @return string HTML output
@@ -1327,7 +1377,7 @@ add_action( 'wp_idea_stream_admin_column_data', 'wc_talk_manage_columns_data', 2
 /**
  * Add a quick edit way to edit workflow state
  * ! require at least WP Idea Stream 2.1.0-alpha
- * 
+ *
  * @param  string $column_name the column name
  * @param  string $post_type   the post type identifier
  * @return string HTML output
@@ -1353,7 +1403,7 @@ add_action( 'quick_edit_custom_box', 'wc_talk_quick_edit_workflow_state', 10, 2 
 /**
  * Add a script to populate the select box regarding the row values
  * ! require at least WP Idea Stream 2.1.0-alpha
- * 
+ *
  * @return string JS Output
  */
 function wc_talk_quick_edit_script() {
@@ -1387,7 +1437,7 @@ add_action( 'admin_footer-edit.php', 'wc_talk_quick_edit_script', 10 );
 /**
  * Add a dropdown to filter the talks by state
  * ! require at least WP Idea Stream 2.1.0-alpha
- * 
+ *
  * @return string HTML Output
  */
 function wc_talk_filter_by_state() {
@@ -1411,7 +1461,7 @@ add_action( 'restrict_manage_posts', 'wc_talk_filter_by_state' );
 /**
  * Add a meta query to the request to get the wanted workflow state
  * ! require at least WP Idea Stream 2.1.0-alpha
- * 
+ *
  * @param  WP_Query $posts_query the posts query
  */
 function wc_talk_filter_request_by_state( $posts_query = null ) {
@@ -1441,8 +1491,8 @@ add_action( 'wp_idea_stream_admin_request', 'wc_talk_filter_request_by_state' );
 /** Options *******************************************************************/
 
 /**
- * Gets the timestamp or mysql date closing limit 
- * 
+ * Gets the timestamp or mysql date closing limit
+ *
  * @param  bool $timestamp true to get the timestamp
  * @return mixed int|string timestamp or mysql date closing limit
  */
@@ -1468,7 +1518,7 @@ function wc_talk_donot_print_warning( $default = false ) {
 
 /**
  * Add a setting section for WordCamp Talks
- * 
+ *
  * @param  array  $settings_sections Idea Stream settings sections
  * @return array                     settings sections
  */
@@ -1485,7 +1535,7 @@ add_filter( 'wp_idea_stream_get_settings_sections', 'wc_talk_settings_section', 
 
 /**
  * Add a setting field for WordCamp Talks
- * 
+ *
  * @param  array  $setting_fields Idea Stream settings fields
  * @return array                  settings fields
  */
@@ -1536,7 +1586,7 @@ function wc_talk_warning_settings_field_callback() {
 
 /**
  * 'Sanitize' the date
- * 
+ *
  * @param  string $option
  * @return string closing date
  */
