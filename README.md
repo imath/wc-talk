@@ -16,7 +16,8 @@ Configuration needed
 --------------------
 
 + WordPress 4.1
-+ WP Idea Stream 2.2.0-alpha [Github repo](https://github.com/imath/wp-idea-stream/tree/2.2.0) or [WordPress repo](https://wordpress.org/plugins/wp-idea-stream) once 2.2.0 is released.
++ WP Idea Stream 2.2.0 [Github repo](https://github.com/imath/wp-idea-stream/) or [WordPress repo](https://wordpress.org/plugins/wp-idea-stream) once 2.2.0 is released.
++ Also works fine with WP Idea Stream 2.3.0 (which is requiring WordPress 4.4)
 
 Installation
 ------------
