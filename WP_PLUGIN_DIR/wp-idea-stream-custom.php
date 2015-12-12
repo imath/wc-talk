@@ -647,8 +647,29 @@ function wc_talk_unset_user_nav( $user_nav = array() ) {
 	return array();
 }
 
-// remove js in edit profile
-remove_action( 'wp_idea_stream_enqueue_scripts', 'wp_idea_stream_users_enqueue_scripts', 11 );
+/**
+ * Adapt User's profile editing to use a link to WordPress Administration
+ * instead of front end editing.
+ *
+ * @since  2015/12/12
+ */
+function wc_tak_edit_profile_in_wp_admin() {
+	if ( ! wp_idea_stream_is_current_user_profile() ) {
+		return;
+	}
+	$wp_scripts = wp_scripts();
+
+	$data = $wp_scripts->get_data( 'wp-idea-stream-script', 'data' );
+	$data .= "\n
+if ( 'undefined' !== typeof jQuery && 'undefined' !== typeof wp_idea_stream_vars.profile_editing ) {
+	wp_idea_stream_vars.profile_editing = undefined;
+	jQuery( '#wp_idea_stream_profile_form' ).remove();
+}
+	";
+
+	$wp_scripts->add_data( 'wp-idea-stream-script', 'data', $data );
+}
+add_action( 'wp_idea_stream_enqueue_scripts', 'wc_tak_edit_profile_in_wp_admin', 20 );
 
 /**
  * Display user's profile fields
