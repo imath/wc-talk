@@ -654,16 +654,20 @@ function wc_talk_unset_user_nav( $user_nav = array() ) {
  * @since  2015/12/12
  */
 function wc_tak_edit_profile_in_wp_admin() {
-	if ( ! wp_idea_stream_is_current_user_profile() ) {
+	if ( ! wp_idea_stream_is_user_profile() ) {
 		return;
 	}
 	$wp_scripts = wp_scripts();
 
 	$data = $wp_scripts->get_data( 'wp-idea-stream-script', 'data' );
 	$data .= "\n
-if ( 'undefined' !== typeof jQuery && 'undefined' !== typeof wp_idea_stream_vars.profile_editing ) {
-	wp_idea_stream_vars.profile_editing = undefined;
-	jQuery( '#wp_idea_stream_profile_form' ).remove();
+if ( 'undefined' !== typeof jQuery ) {
+	if ( 'undefined' !== typeof wp_idea_stream_vars.profile_editing ) {
+		wp_idea_stream_vars.profile_editing = undefined;
+		jQuery( '#wp_idea_stream_profile_form' ).remove();
+	} else {
+		jQuery( '#wp-idea-stream .user-description' ).remove();
+	}
 }
 	";
 
