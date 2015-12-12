@@ -1,18 +1,18 @@
-# Copyright (C) 2014 
-# This file is distributed under the same license as the  package.
+# Copyright (C) 2015 {package-name}
+# This file is distributed under the same license as the {package-name} package.
 msgid ""
 msgstr ""
 "Project-Id-Version:  \n"
-"Report-Msgid-Bugs-To: http://wordpress.org/tag/wp-idea-stream-custom\n"
-"POT-Creation-Date: 2014-10-24 16:59:13+00:00\n"
+"Report-Msgid-Bugs-To: https://make.wordpress.org/polyglots/\n"
+"POT-Creation-Date: 2015-11-30 20:41:33+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2014-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2015-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 
-#: wp-idea-stream-custom.php:79
+#: wp-idea-stream-custom.php:79 wp-idea-stream-custom.php:1638
 msgid "Talks"
 msgstr ""
 
@@ -40,7 +40,7 @@ msgstr ""
 msgid "Edit Talk"
 msgstr ""
 
-#: wp-idea-stream-custom.php:86
+#: wp-idea-stream-custom.php:86 wp-idea-stream-custom.php:1645
 msgid "New Talk"
 msgstr ""
 
@@ -172,120 +172,128 @@ msgstr ""
 msgid "If possible, choose an email that is associated to your %s account"
 msgstr ""
 
-#: wp-idea-stream-custom.php:283 wp-idea-stream-custom.php:679
+#: wp-idea-stream-custom.php:284 wp-idea-stream-custom.php:697
 msgid "Short biography"
 msgstr ""
 
-#: wp-idea-stream-custom.php:313
+#: wp-idea-stream-custom.php:314
 msgid "Site language"
 msgstr ""
 
-#: wp-idea-stream-custom.php:389
+#: wp-idea-stream-custom.php:391
 msgid "Please be aware that speakers are not remunerated nor defrayed. Your presentation or workshop is a volontary participation in the WordPress community."
 msgstr ""
 
-#: wp-idea-stream-custom.php:390
+#: wp-idea-stream-custom.php:392
 msgid "Please be also aware that you may be filmed and that the video of your presentation can be available on %s."
 msgstr ""
 
-#: wp-idea-stream-custom.php:517
+#: wp-idea-stream-custom.php:519
 msgid "Speaker"
 msgstr ""
 
-#: wp-idea-stream-custom.php:600
+#: wp-idea-stream-custom.php:618
 msgid "Ah! caught trying to spy!"
 msgstr ""
 
-#: wp-idea-stream-custom.php:686
+#: wp-idea-stream-custom.php:704
 msgid "Edit your profile"
 msgstr ""
 
-#: wp-idea-stream-custom.php:922 wp-idea-stream-custom.php:969
-#: wp-idea-stream-custom.php:1079
+#: wp-idea-stream-custom.php:973 wp-idea-stream-custom.php:1020
 msgid "Targetted level"
 msgstr ""
 
-#: wp-idea-stream-custom.php:926 wp-idea-stream-custom.php:958
+#: wp-idea-stream-custom.php:977 wp-idea-stream-custom.php:1009
 msgid "Novice"
 msgstr ""
 
-#: wp-idea-stream-custom.php:933 wp-idea-stream-custom.php:959
+#: wp-idea-stream-custom.php:984 wp-idea-stream-custom.php:1010
 msgid "Advanced"
 msgstr ""
 
-#: wp-idea-stream-custom.php:940 wp-idea-stream-custom.php:960
+#: wp-idea-stream-custom.php:991 wp-idea-stream-custom.php:1011
 msgid "Expert"
 msgstr ""
 
-#: wp-idea-stream-custom.php:992 wp-idea-stream-custom.php:1063
-#: wp-idea-stream-custom.php:1080
+#: wp-idea-stream-custom.php:1043 wp-idea-stream-custom.php:1114
+#: wp-idea-stream-custom.php:1148
 msgid "Targetted audience"
 msgstr ""
 
-#: wp-idea-stream-custom.php:996 wp-idea-stream-custom.php:1049
+#: wp-idea-stream-custom.php:1047 wp-idea-stream-custom.php:1100
 msgid "Developers"
 msgstr ""
 
-#: wp-idea-stream-custom.php:1003 wp-idea-stream-custom.php:1050
+#: wp-idea-stream-custom.php:1054 wp-idea-stream-custom.php:1101
 msgid "Designers"
 msgstr ""
 
-#: wp-idea-stream-custom.php:1010 wp-idea-stream-custom.php:1051
+#: wp-idea-stream-custom.php:1061 wp-idea-stream-custom.php:1102
 msgid "Project Managers"
 msgstr ""
 
-#: wp-idea-stream-custom.php:1017 wp-idea-stream-custom.php:1052
+#: wp-idea-stream-custom.php:1068 wp-idea-stream-custom.php:1103
 msgid "Content Producers"
 msgstr ""
 
-#: wp-idea-stream-custom.php:1024 wp-idea-stream-custom.php:1053
+#: wp-idea-stream-custom.php:1075 wp-idea-stream-custom.php:1104
 msgid "Marketers"
 msgstr ""
 
-#: wp-idea-stream-custom.php:1031 wp-idea-stream-custom.php:1054
+#: wp-idea-stream-custom.php:1082 wp-idea-stream-custom.php:1105
 msgid "Customers"
 msgstr ""
 
-#: wp-idea-stream-custom.php:1131
+#: wp-idea-stream-custom.php:1130
+msgid "Sign Up"
+msgstr ""
+
+#: wp-idea-stream-custom.php:1199
 msgid "Pending"
 msgstr ""
 
-#: wp-idea-stream-custom.php:1132
+#: wp-idea-stream-custom.php:1200
 msgid "Short-listed"
 msgstr ""
 
-#: wp-idea-stream-custom.php:1133
+#: wp-idea-stream-custom.php:1201
 msgid "Selected"
 msgstr ""
 
-#: wp-idea-stream-custom.php:1134
+#: wp-idea-stream-custom.php:1202
 msgid "Rejected"
 msgstr ""
 
-#: wp-idea-stream-custom.php:1165
+#: wp-idea-stream-custom.php:1233
 msgid "Filter by state"
 msgstr ""
 
-#: wp-idea-stream-custom.php:1191
+#: wp-idea-stream-custom.php:1259
 msgid "Workflow"
 msgstr ""
 
-#: wp-idea-stream-custom.php:1220 wp-idea-stream-custom.php:1291
-#: wp-idea-stream-custom.php:1343
+#: wp-idea-stream-custom.php:1288 wp-idea-stream-custom.php:1359
+#: wp-idea-stream-custom.php:1411
 msgid "State of the talk"
 msgstr ""
 
-#: wp-idea-stream-custom.php:1476
+#: wp-idea-stream-custom.php:1544
 msgid "WordCamp Talks Settings"
 msgstr ""
 
-#: wp-idea-stream-custom.php:1493
+#: wp-idea-stream-custom.php:1561
 msgid "Talk submissions closing date"
 msgstr ""
 
-#: wp-idea-stream-custom.php:1500
+#: wp-idea-stream-custom.php:1568
 msgid "Neutralize warning on sign-up page"
 msgstr ""
-#. Author of the plugin/theme
-msgid "imath"
+
+#: wp-idea-stream-custom.php:1774
+msgid "To rate"
+msgstr ""
+
+#: wp-idea-stream-custom.php:1819
+msgid "Alright sparky, no more ideas to rate.. Good job!"
 msgstr ""

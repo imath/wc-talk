@@ -1116,6 +1116,23 @@ function wc_talk_audience_single_display( $display_meta = '' , $meta_object = nu
 	<?php
 }
 
+/**
+ * Add the signup link to the widget
+ */
+function wc_talk_widget_nav_items( $nav_items = array() ) {
+	if ( ! wp_idea_stream_is_signup_allowed_for_current_blog() || ( is_user_logged_in() && ! is_admin() ) ) {
+		return $nav_items;
+	}
+
+	return array_merge( $nav_items, array(
+		'signup' => array(
+			'url'  => wp_idea_stream_users_get_signup_url(),
+			'name' => __( 'Sign Up', 'wc-talk' )
+		)
+	) );
+}
+add_filter( 'wp_idea_stream_widget_nav_items', 'wc_talk_widget_nav_items', 10, 1 );
+
 /** Admin Stuff ***************************************************************/
 
 /**
@@ -1604,3 +1621,201 @@ function wc_talk_settings_sanitize( $option = '' ) {
 		return $option;
 	}
 }
+
+function wc_talk_admin_bar_menu() {
+	global $wp_admin_bar;
+
+	if ( ! current_user_can( 'read' ) || current_user_can( 'manage_options' ) || ! is_admin() ) {
+		return false;
+	}
+
+	// Unique ID for the 'My Account' menu
+	$selector_id = 'wc-talk-user-admin-links';
+
+	// Add the top-level User Admin button
+	$wp_admin_bar->add_menu( array(
+		'id'    => $selector_id,
+		'title' => '<span class="ab-icon dashicons dashicons-megaphone update-plugins"></span><span class="attention">' . __( 'Talks', 'wc-talk' ) . '</span>',
+		'href'  => wp_idea_stream_get_root_url()
+	) );
+
+	$wp_admin_bar->add_menu( array(
+		'parent' => $selector_id,
+		'id'     => $selector_id . '-new',
+		'title'  => __( 'New Talk', 'wc-talk' ),
+		'href'   => wp_idea_stream_get_form_url()
+	) );
+}
+add_action( 'admin_bar_menu', 'wc_talk_admin_bar_menu', 99 );
+
+/**
+ * Add a rewrite tag for the User's Not Rated ideas.
+ * 
+ * @since 2015-11-30
+ * @todo  Use a function to retrieve the "is_to_rate" rewrite tag
+ */
+function wc_talk_add_user_to_rate_rewrite_tag( ) {
+	add_rewrite_tag( '%is_to_rate%', '([1]{1,})' );
+}
+add_action( 'wp_idea_stream_add_rewrite_tags',  'wc_talk_add_user_to_rate_rewrite_tag', 11 );
+
+/**
+ * Add rewrite rules for the User's Not Rated ideas.
+ * 
+ * @since 2015-11-30
+ * @todo  Use a function to retrieve the "is_to_rate" rewrite tag and the "to-rate" rewrite slug
+ */
+function wc_talk_add_users_to_rate_rewrite_rule( ) {
+	$priority  = 'top';
+	$root_rule = '/([^/]+)/?$';
+	$user_rid  = wp_idea_stream_user_rewrite_id();
+	$user_slug = wp_idea_stream_user_slug();
+
+	$page_slug  = wp_idea_stream_paged_slug();
+	$paged_rule = '/([^/]+)/' . $page_slug . '/?([0-9]{1,})/?$';
+
+	// User Rates
+	$user_to_rate_rule       = '/([^/]+)/to-rate/?$';
+	$user_to_rate_paged_rule = '/([^/]+)/to-rate/' . $page_slug . '/?([0-9]{1,})/?$';
+
+	// User rules
+	add_rewrite_rule( $user_slug . $user_to_rate_paged_rule,    'index.php?' . $user_rid . '=$matches[1]&is_to_rate=1&paged=$matches[2]', $priority );
+	add_rewrite_rule( $user_slug . $user_to_rate_rule,          'index.php?' . $user_rid . '=$matches[1]&is_to_rate=1',                   $priority );
+}
+add_action( 'wp_idea_stream_add_rewrite_rules', 'wc_talk_add_users_to_rate_rewrite_rule', 11 );
+
+/**
+ * Parse the main query and eventually surcharge it with a Meta Query to get the
+ * talk the user has not rated yet
+ * 
+ * @since 2015-11-30
+ * @todo  Use a function to retrieve the "is_to_rate" rewrite tag
+ */
+function wc_talk_users_parse_query( $posts_query = null ) {
+	$user_id      = wp_idea_stream_get_idea_var( 'is_user' );
+	$user_to_rate = $posts_query->get( 'is_to_rate' );
+
+	if ( ! empty( $user_id ) && ! empty( $user_to_rate ) ) {
+		// We are viewing user's "to rate" talks
+		wp_idea_stream_set_idea_var( 'is_user_to_rate', true );
+
+		// Define the Meta Query to get the not rated yet talks
+		$posts_query->set( 'meta_query', array(
+			'relation' => 'OR',
+			array(
+				'key'     => '_ideastream_rates',
+				'value'   => ';i:' . $user_id .';',
+				'compare' => 'NOT LIKE'
+			),
+			array(
+				'key'     => '_ideastream_average_rate',
+				'compare' => 'NOT EXISTS'
+			)
+		) );
+
+		// We need to see all ideas, not only the one of the current displayed user
+		$posts_query->set( 'author', 0 );
+	}
+}
+// Hook this right After WP Idea Stream!
+add_action( 'parse_query', 'wc_talk_users_parse_query', 3 );
+
+/**
+ * Get a given User's Not Rated talks profile link.
+ * 
+ * @since 2015-11-30
+ * @todo  Use a function to retrieve the "is_to_rate" rewrite tag and the "to-rate" rewrite slug
+ */
+function wc_talk_users_get_user_to_rate_url( $user_id = 0, $user_nicename = '' ) {
+	global $wp_rewrite;
+
+	// Bail if no user id provided
+	if ( empty( $user_id ) ) {
+		return false;
+	}
+
+	// Pretty permalinks
+	if ( $wp_rewrite->using_permalinks() ) {
+		$url = $wp_rewrite->root . wp_idea_stream_user_slug() . '/%' . wp_idea_stream_user_rewrite_id() . '%/to-rate';
+
+		// Get username if not passed
+		if ( empty( $user_nicename ) ) {
+			$user_nicename = wp_idea_stream_users_get_user_data( 'id', $user_id, 'user_nicename' );
+		}
+
+		$url = str_replace( '%' . wp_idea_stream_user_rewrite_id() . '%', $user_nicename, $url );
+		$url = home_url( user_trailingslashit( $url ) );
+
+	// Unpretty permalinks
+	} else {
+		$url = add_query_arg( array( wp_idea_stream_user_rewrite_id() => $user_id, 'is_to_rate' => '1' ), home_url( '/' ) );
+	}
+
+	/**
+	 * Filter the rates profile url once WC Talk has built it
+	 *
+	 * @param string $url           To rate profile Url
+	 * @param int    $user_id       the user ID
+	 * @param string $user_nicename the username
+	 */
+	return apply_filters( 'wc_talk_users_get_user_to_rate_url', $url, $user_id, $user_nicename );
+}
+
+/**
+ * Add a new nav to display the not rated ideas to user's profile navigation
+ * 
+ * @since 2015-11-30
+ */
+function wc_talk_users_to_rate_nav( $nav_items, $user_id, $username ) {
+	if ( ! wp_idea_stream_is_rating_disabled() ) {
+		$is_user_to_rate = (bool) wp_idea_stream_get_idea_var( 'is_user_to_rate' );
+
+		$nav_items['to_rate'] = array(
+			'title'   => __( 'To rate', 'wc-talk' ),
+			'url'     => wc_talk_users_get_user_to_rate_url( $user_id, $username ),
+			'current' => $is_user_to_rate,
+			'slug'    => 'to-rate',
+		);
+
+		// Avoid the Published nav to wrongly be the "current" one if viewing the not rated talks
+		if ( ! empty( $is_user_to_rate ) ) {
+			$nav_items['profile']['current'] = false;
+		}
+	}
+
+	return $nav_items;
+}
+add_filter( 'wp_idea_stream_users_get_profile_nav_items', 'wc_talk_users_to_rate_nav', 10, 3 );
+
+/**
+ * Make sure the base argument of the paginate links is ready to paginate not rated talks
+ * 
+ * @since 2015-11-30
+ */
+function wc_talk_users_talks_loop_pagination( $paginate_args ) {
+	if ( false === (bool) wp_idea_stream_get_idea_var( 'is_user_to_rate' ) || ! wp_idea_stream_is_pretty_links() ) {
+		return $paginate_args;
+	}
+
+	$user_id  = wp_idea_stream_users_displayed_user_id();
+	$username = wp_idea_stream_users_get_displayed_user_username();
+
+	$paginate_args['base'] = trailingslashit( wc_talk_users_get_user_to_rate_url( $user_id, $username ) ) . '%_%';
+
+	return $paginate_args;
+}
+add_filter( 'wp_idea_stream_ideas_pagination_args', 'wc_talk_users_talks_loop_pagination', 10, 1 );
+
+/**
+ * Displays a feedback message if no more talks need to be rated
+ * 
+ * @since 2015-11-30
+ */
+function wc_talk_talks_no_more_to_rate( $output ) {
+	if ( false === (bool) wp_idea_stream_get_idea_var( 'is_user_to_rate' ) ) {
+		return $output;
+	}
+
+	return esc_html__( 'Alright sparky, no more ideas to rate.. Good job!', 'wc-talk' );
+}
+add_filter( 'wp_idea_stream_ideas_get_not_found', 'wc_talk_talks_no_more_to_rate', 10, 1 );
