@@ -1,6 +1,8 @@
 WordCamp Talk
 =============
 
+**This WP Plugin is no more maintained and is now archived**
+
 This repository contains a specific `wp-idea-stream-custom.php` file to extend the plugin [WP Idea Stream](https://wordpress.org/plugins/wp-idea-stream) into a tool to get WordCamp speakers talk proposals.
 
 + All submitted talks will be private and only viewable by the speaker who submitted them or the administrators
